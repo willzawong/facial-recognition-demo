@@ -139,8 +139,9 @@ export default function WebcamFeed() {
         ctx.fillStyle = '#00ffe0'
         ctx.textBaseline = 'bottom'
 
-        const [emotion] = Object.entries(res.expressions)
-                             .sort((a,b)=>b[1]-a[1])[0]
+        const entries = Object.entries(res.expressions as Record<string, number>)
+        const [emotion] = entries.sort((a, b) => b[1] - a[1])
+
         const label = `${res.gender}, ${Math.round(res.age)}y (${emotion})`
         ctx.fillText(label, flippedX, y - 5)
       })
