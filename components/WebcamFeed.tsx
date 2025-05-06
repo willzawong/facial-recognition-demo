@@ -27,7 +27,8 @@ export default function WebcamFeed() {
   // Play/pause webcam video
   useEffect(() => {
     const vid = videoRef.current; if (!vid) return
-    paused ? vid.pause() : vid.play().catch(console.error)
+    if(paused) vid.pause()
+    else vid.play().catch(console.error)
   }, [paused])
 
   // clear any upload state
@@ -82,7 +83,7 @@ export default function WebcamFeed() {
     if (videoRef.current) {
       videoRef.current.pause()
     }
-  }, [dispatch])
+  }, [dispatch, clearUploaded])
 
   // load models once
   useEffect(() => {
@@ -108,7 +109,7 @@ export default function WebcamFeed() {
         return
       }
 
-      let results: any[] = []
+      let results: faceapi.WithFaceExpressions<faceapi.WithAge<faceapi.WithGender<{ detection: faceapi.FaceDetection }>>>[] = []
       try {
         results = await detectFaces(video)
       } catch (err) {
@@ -139,7 +140,7 @@ export default function WebcamFeed() {
         ctx.fillStyle = '#00ffe0'
         ctx.textBaseline = 'bottom'
 
-        const entries = Object.entries(res.expressions as Record<string, number>)
+        const entries = Object.entries(res.expressions as unknown as Record<string, number>)
         const [emotion] = entries.sort((a, b) => b[1] - a[1])
 
         const label = `${res.gender}, ${Math.round(res.age)}y (${emotion})`
@@ -301,7 +302,7 @@ export default function WebcamFeed() {
               </div>
               <h2 className="text-xl font-semibold mb-2">Drag & Drop Images</h2>
               <p className="text-neutral-400">
-                or click the "Upload Image" or "Start Webcam" button below
+                or click the &quot;Upload Image&quot; or &quot;Start Webcam&quot; button below
               </p>
             </div>
           )}
