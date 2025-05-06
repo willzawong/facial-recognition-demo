@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Face Detection App
 
-## Getting Started
+A responsive face detection web application that uses facial recognition to identify faces, estimate age and gender, and display emotions in real time or from uploaded images.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
+## 🚀 Getting Started
+
+To run the development server:
+
+```
+npm run dev  
+```
+or  
+```
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open your browser to http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build the project for production:
+```
+npm run build
+```
+To preview the production build locally:
+```
+npm run start
+```
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧰 Tech Stack
 
-## Learn More
+- Next.js 
+- React v19
+- TypeScript
+- Tailwind CSS
+- Redux Toolkit
+- face-api.js (facial recognition)
+- shadcn/ui (component library)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ Feature Checklist
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] Start and stop the webcam feed
+- [x] Detect faces in captured webcam images
+- [x] Display overlays indicating face position and size
+- [x] Show estimated name, age, gender, and emotion
+- [x] Handle multiple faces in a single image
+- [x] Fully responsive on desktop and mobile
+- [x] Upload image from device for facial recognition
+- [x] Real-time emotion recognition
+- [x] Deployed on Heroku at https://facial-recognition-demo-0ed84535213b.herokuapp.com/
