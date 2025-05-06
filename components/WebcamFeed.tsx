@@ -83,7 +83,7 @@ export default function WebcamFeed() {
     if (videoRef.current) {
       videoRef.current.pause()
     }
-  }, [dispatch, clearUploaded])
+  }, [dispatch])
 
   // load models once
   useEffect(() => {
@@ -141,9 +141,9 @@ export default function WebcamFeed() {
         ctx.textBaseline = 'bottom'
 
         const entries = Object.entries(res.expressions as unknown as Record<string, number>)
-        const [emotion] = entries.sort((a, b) => b[1] - a[1])
+        const [emotion] = entries.sort((a, b) => b[1] - a[1])[0]
 
-        const label = `${res.gender}, ${Math.round(res.age)}y (${emotion})`
+        const label = `${res.gender}, ${Math.round(res.age)}y, ${emotion}`
         ctx.fillText(label, flippedX, y - 5)
       })
 
@@ -218,7 +218,7 @@ export default function WebcamFeed() {
 
       const [emotion] = Object.entries(res.expressions)
                            .sort((a,b)=>b[1]-a[1])[0]
-      const label = `${res.gender}, ${Math.round(res.age)}y (${emotion})`
+      const label = `${res.gender}, ${Math.round(res.age)}y, ${emotion}`
       ctx.fillText(label, bx, by - fontSize/2)
     })
 
